@@ -13,7 +13,8 @@ namespace Quiz.Data
         {
             this.questions = new List<Question>()
             {
-                new Question() { 
+                new Question() 
+                { 
                     Id = 1, 
                     Name = "Qual é a capital de Angola?", 
                     Answers = new List<Answer>()
@@ -23,7 +24,33 @@ namespace Quiz.Data
                         new Answer() { Id = 3, Name = "Huambo" },
                         new Answer() { Id = 4, Name = "Uíge" }
                     },
-                    AnswerCorrectId = 1
+                    AnswerCorrectId = 2
+                },
+                new Question() 
+                {
+                    Id = 2,
+                    Name = "Qual é a capital de Luanda?",
+                    Answers = new List<Answer>()
+                    {
+                        new Answer() { Id = 1, Name = "Viana" },
+                        new Answer() { Id = 2, Name = "Cazenga" },
+                        new Answer() { Id = 3, Name = "Luanda" },
+                        new Answer() { Id = 4, Name = "Talatona" }
+                    },
+                    AnswerCorrectId = 3
+                },
+                new Question() 
+                {
+                    Id = 3,
+                    Name = "Quem é o presidente de Angola?",
+                    Answers = new List<Answer>()
+                    {
+                        new Answer() { Id = 1, Name = "Ze du" },
+                        new Answer() { Id = 2, Name = "JLO" },
+                        new Answer() { Id = 3, Name = "AJC" },
+                        new Answer() { Id = 4, Name = "Samakuva" }
+                    },
+                    AnswerCorrectId = 3
                 }
             };
         }

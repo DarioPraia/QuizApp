@@ -13,7 +13,8 @@ namespace Quiz.Pages.Questions
     {
         private IQuestionData questionData;
 
-        public Question Question { get; set; }
+        [BindProperty]
+        public Question Question { get; set; } 
 
         public ShowModel(IQuestionData questionData)
         {
@@ -23,6 +24,20 @@ namespace Quiz.Pages.Questions
         public void OnGet(int id)
         {
             Question = questionData.GetQuestionById(id);
+        }
+
+        public IActionResult OnPost()
+        {
+            int nextQuestionId = Question.Id + 1;
+
+            Question = questionData.GetQuestionById(nextQuestionId);
+
+            if (Question == null)
+            {
+                return RedirectToPage("./Result");
+            }
+
+            return RedirectToPage(new { id = nextQuestionId});
         }
     }
 }
