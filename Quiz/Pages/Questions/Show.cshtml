@@ -1,4 +1,19 @@
-﻿@page
+﻿@page "{id:int}"
 @model Quiz.Pages.Questions.ShowModel
 @{
 }
+
+<h1>Quiz - @Model.Question.Name</h1>
+
+<form method="post">
+    @foreach (var answer in Model.Question.Answers)
+    {
+        <div class="form-check">
+            <input class="form-check-input" type="radio" asp-for="@answer.Id" value="@answer.Id">
+            <label class="form-check-label" asp-for="@answer.Name">
+                @answer.Name
+            </label>
+        </div>
+    }
+    <button type="submit" class="btn btn-primary">Responder</button>
+</form>
