@@ -20,7 +20,7 @@ namespace Quiz.Data
                     Answers = new List<Answer>()
                     {
                         new Answer() { Id = 1, Name = "Benguela" },
-                        new Answer() { Id = 2, Name = "Angola" },
+                        new Answer() { Id = 2, Name = "Luanda" },
                         new Answer() { Id = 3, Name = "Huambo" },
                         new Answer() { Id = 4, Name = "Uíge" }
                     },
@@ -53,6 +53,11 @@ namespace Quiz.Data
                     AnswerCorrectId = 3
                 }
             };
+        }
+
+        public List<Question> GetAll()
+        {
+            return questions;
         }
 
         public Question GetQuestionById(int id)

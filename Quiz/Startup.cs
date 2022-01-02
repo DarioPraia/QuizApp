@@ -27,6 +27,8 @@ namespace Quiz
         {
             services.AddSingleton<IQuestionData, InMemoryQuestionData>();
 
+            services.AddSingleton<IQuizData, InMemoryQuizData>();
+
             services.AddRazorPages();
         }
 

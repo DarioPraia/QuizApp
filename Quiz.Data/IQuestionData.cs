@@ -7,6 +7,7 @@ namespace Quiz.Data
 {
     public interface IQuestionData
     {
-        Question GetQuestionById(int id); 
+        Question GetQuestionById(int id);
+        List<Question> GetAll();
     }
 }

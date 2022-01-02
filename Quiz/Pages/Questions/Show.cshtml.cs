@@ -16,26 +16,47 @@ namespace Quiz.Pages.Questions
         [BindProperty]
         public Question Question { get; set; } 
 
-        public ShowModel(IQuestionData questionData)
+        [BindProperty]
+        public int answerId { get; set; }
+
+        /*  -----   */
+        private IQuizData quizData;
+
+        public Quizz Quizz { get; set; }
+
+        public ShowModel(IQuestionData questionData, IQuizData quizData)
         {
             this.questionData = questionData;
+
+            this.quizData = quizData;
+            this.quizData.AddQuestions(1, this.questionData.GetAll());
         }
 
         public void OnGet(int id)
         {
-            Question = questionData.GetQuestionById(id);
+            //Question = questionData.GetQuestionById(id); 
+            Question = quizData.GetQuizQuestionById(1, id);
+
+            if (quizData.GetQuizzById(1).StartDate == null)
+            {
+                quizData.StartQuizz(1);
+            }
         }
 
         public IActionResult OnPost()
         {
+            Quizz = quizData.UpdateQuestion(1, Question);
+
             int nextQuestionId = Question.Id + 1;
 
-            Question = questionData.GetQuestionById(nextQuestionId);
+            Question = quizData.GetQuizQuestionById(1, nextQuestionId);
 
             if (Question == null)
             {
+                quizData.EndQuizz(Quizz.Id);
+
                 return RedirectToPage("./Result");
-            }
+            } 
 
             return RedirectToPage(new { id = nextQuestionId});
         }

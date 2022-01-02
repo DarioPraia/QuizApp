@@ -6,10 +6,13 @@
 <h1>Quiz - @Model.Question.Name</h1>
 
 <form method="post">
+    <input type="hidden" asp-for="Question.Id" />
+    <input type="hidden" asp-for="Question.Name" />
+    <input type="hidden" asp-for="Question.AnswerCorrectId" />
     @foreach (var answer in Model.Question.Answers)
     {
         <div class="form-check">
-            <input class="form-check-input" type="radio" asp-for="@answer.Id" value="@answer.Id">
+            <input class="form-check-input" type="radio" asp-for="Question.UserAnswerId" value="@answer.Id">
             <label class="form-check-label" asp-for="@answer.Name">
                 @answer.Name
             </label>

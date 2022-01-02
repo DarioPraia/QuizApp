@@ -13,5 +13,7 @@ namespace Quiz.Core
         public List<Answer> Answers { get; set; }
 
         public int AnswerCorrectId { get; set; }
+
+        public int UserAnswerId { get; set; }
     }
 }
